@@ -5,4 +5,4 @@
  * The original Module.php is in 'src/CmsMailer' in order to respect PSR-0
  */
 
-require_once __DIR__ . '/src/CmsMailer/Module.php';
+require_once __DIR__ . '/src/Module.php';
