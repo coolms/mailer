@@ -81,7 +81,6 @@ class MailService implements
     public function attach($attachment)
     {
         $this->attachments[] = $attachment;
-
         return $this;
     }
 
@@ -91,7 +90,6 @@ class MailService implements
     public function setMessage(Message $message)
     {
         $this->message = $message;
-
         return $this;
     }
 
@@ -134,7 +132,6 @@ class MailService implements
     {
         $body = $this->prepareBody($body);
         $this->getMessage()->setBody($body);
-
         return $this;
     }
 
@@ -152,6 +149,7 @@ class MailService implements
             $filter = new StripTags;
             return $filter->filter($body);
         }
+
         if ($this->getFormat() === Mime::TYPE_HTML) {
 
             $html = new MimePart($body);
@@ -170,7 +168,6 @@ class MailService implements
     public function setEncoding($encoding)
     {
         $this->encoding = $encoding;
-
         return $this;
     }
 
@@ -188,7 +185,6 @@ class MailService implements
     public function setFromAddress($from)
     {
         $this->fromAddress = $from;
-
         return $this;
     }
 
@@ -206,7 +202,6 @@ class MailService implements
     public function setFromName($name)
     {
         $this->fromName = $name;
-
         return $this;
     }
 
@@ -224,7 +219,6 @@ class MailService implements
     public function setFormat($format)
     {
         $this->format = $format;
-
         return $this;
     }
 
@@ -242,7 +236,6 @@ class MailService implements
     public function setTransport(TransportInterface $transport)
     {
         $this->transport = $transport;
-
         return $this;
     }
 
@@ -265,7 +258,6 @@ class MailService implements
     public function setViewRenderer(RendererInterface $viewRenderer)
     {
         $this->viewRenderer = $viewRenderer;
-
         return $this;
     }
 

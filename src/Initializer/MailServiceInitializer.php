@@ -13,7 +13,8 @@ namespace CmsMailer\Initializer;
 use Zend\ServiceManager\AbstractPluginManager,
     Zend\ServiceManager\InitializerInterface,
     Zend\ServiceManager\ServiceLocatorInterface,
-    CmsMailer\Service\MailServiceAwareInterface;
+    CmsMailer\Service\MailServiceAwareInterface,
+    CmsMailer\Service\MailServiceInterface;
 
 class MailServiceInitializer implements InitializerInterface
 {
@@ -26,7 +27,8 @@ class MailServiceInitializer implements InitializerInterface
             if ($serviceLocator instanceof AbstractPluginManager) {
                 $serviceLocator = $serviceLocator->getServiceLocator();
             }
-            $instance->setMailService($serviceLocator->get('CmsMailer\\Service\\MailServiceInterface'));
+
+            $instance->setMailService($serviceLocator->get(MailServiceInterface::class));
         }
     }
 }

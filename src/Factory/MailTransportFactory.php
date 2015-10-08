@@ -19,12 +19,16 @@ class MailTransportFactory implements FactoryInterface
 {
     /**
      * {@inheritDoc}
+     *
+     * @return Smtp
      */
-    public function createService(ServiceLocatorInterface $serviceManager)
+    public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $config = $serviceManager->get('Config');
-        $transport = new Smtp();
-        $transport->setOptions(new SmtpOptions($config['mail']['transport']['options']));
-        return $transport;
+        $config = $serviceLocator->get('Config');
+        $options = new SmtpOptions(isset($config['mail']['transport']['options'])
+            ? $config['mail']['transport']['options']
+            : []
+        );
+        return (new Smtp())->setOptions($options);
     }
 }
